@@ -57,13 +57,14 @@ export class VolumeControlGestureExtension implements ISubExtension {
     }
 
     setVerticalSwipeTracker(nfingers: number[]) {
+        // Use the finger assignment from settings
         this._verticalSwipeTracker = createSwipeTracker(
             global.stage,
             nfingers,
             Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
             Clutter.Orientation.VERTICAL,
             !ExtSettings.INVERT_VOLUME_DIRECTION,
-            TouchpadConstants.VOLUME_CONTROL_MULTIPLIER,
+            0.25, // Lower multiplier for smoother, finer control
             {allowTouch: false}
         );
 
@@ -84,13 +85,14 @@ export class VolumeControlGestureExtension implements ISubExtension {
     }
 
     setHorizontalSwipeTracker(nfingers: number[]) {
+        // Use the finger assignment from settings
         this._horizontalSwipeTracker = createSwipeTracker(
             global.stage,
             nfingers,
             Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW,
             Clutter.Orientation.HORIZONTAL,
             !ExtSettings.INVERT_VOLUME_DIRECTION,
-            TouchpadConstants.VOLUME_CONTROL_MULTIPLIER,
+            0.25, // Lower multiplier for smoother, finer control
             {allowTouch: false}
         );
 
